@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#cvs {
+				box-shadow: 0 0 10px #ccc;
+				display: block;
+				margin: 20px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="cvs" width="800" height="800"></canvas>
+	</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById('cvs');
+		var cvs = canvas.getContext('2d');
+		
+  
+        function Wing (){
+        }
+        
+        Wing.prototype.draws = function(x1,y1,ctrX,ctrY,x2,y2,x3,y3,arrColor){
+        	  cvs.beginPath();
+        	  cvs.moveTo(x1,y1);
+        	  cvs.quadraticCurveTo(ctrX,ctrY,x2,y2);
+        	  cvs.lineTo(x3,y3);
+        	  cvs.stroke();
+        	  cvs.fillStyle = arrColor;
+        	  cvs.fill();
+        }
+        Wing.prototype.drawss = function(x1,y1,arrColor1,ctrX,ctrY,x2,y2){
+        	  cvs.beginPath();
+        	  cvs.moveTo(x1,y1);
+        	  cvs.fillStyle = arrColor1;
+        	  cvs.quadraticCurveTo(ctrX,ctrY,x2,y2);
+        	  cvs.stroke();
+        	  cvs.fill();
+        }
+        Wing.prototype.drawDian = function(arrColor2,x,y,r,sA,eA){
+        	cvs.beginPath();
+        	cvs.fillStyle = arrColor2;
+        	cvs.arc(x,y,r,sA,eA);
+        	cvs.fill();
+        }
+        Wing.prototype.drawStick = function(arrColor3,x,y,w,h){
+        	  cvs.beginPath();
+        	  cvs.fillStyle = arrColor3;
+        	  cvs.fillRect(x,y,w,h);
+        }
+        var a = 0;
+        arrColor = ['greenyellow','#b3c556','#1eb54a','#0086b1'];
+        arrColor1 = ['yellow','#ccde65','#04d859','#0096cc'];
+        
+        
+        function doMove(){
+        	a+=2;
+        	cvs.save();
+        	cvs.clearRect(0,0,800,800);
+        	cvs.translate(300,300);
+        var wingStick = new Wing();
+        wingStick.drawStick('goldenrod',-5,-5,10,600);
+        cvs.rotate(Math.PI/180*a);
+        for (var i = 0;i<4;i++) {
+        	    cvs.rotate(Math.PI/180*(-90));
+	        	var wings = new Wing();
+	        var wingss = new Wing();
+	        wings.draws(0,-120,150,-150,300,0,0,0,arrColor[i]);
+	        wingss.drawss(0,0,arrColor1[i],150,-150,300,0);
+        }
+        var wingdian = new Wing();
+        wingdian.drawDian('white',0,0,15,0,Math.PI*2);
+        cvs.restore();
+        window.requestAnimationFrame(doMove);
+        }
+        window.requestAnimationFrame(doMove);
+       
+        
+        
+         
+	</script>
+</html>

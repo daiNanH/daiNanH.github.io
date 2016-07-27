@@ -1,0 +1,20 @@
+
+.swiper-container {
+	width: 1200px;
+	/*border: 1px solid green;*/
+}
+
+.swiper-wrapper {
+	width: 100%;height: 100%;
+}
+
+.swiper-wrapper img {
+	width: 100%;
+}
+@media screen and (min-width: 1350px) {
+	#nav,#hobby,#myself{width: 1200px;}
+	.swiper-container{height: 675px;}
+}
+@media screen and (max-width: 1350px) {
+	.swiper-container{width: 90%;}
+}
