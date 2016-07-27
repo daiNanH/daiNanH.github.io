@@ -2,16 +2,99 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>实验</title>
-	<style>
-h1{
-	color: red;
-}
+	<title>凯哥盛世网</title>
+	<link rel="stylesheet" type="text/css" href="css/navigationBar.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="css/personnal.css">
+	<style type="text/css">
+		*{
+			padding: 0;margin: 0;
+		}
 
 	</style>
 </head>
 <body>
-	<h1>峰会</h1>
-	<h2>回归</h2>
+	<!-- 导航栏 -->
+	<div id="title">
+		<div id="nav">
+			<div id="kaige">
+				<div id="logo" class="animated rotateIn"><img src="img/logo.png"></div>&nbsp <span class="animated flip" id="k">凯哥盛世网</span>
+			</div>
+
+			<ul id="ul1">
+				<li>
+					<div id="one">首页</div>
+					<div id="two">凯哥盛世</div>
+				</li>
+				<li>
+					<div id="one">凯哥风采</div>
+					<div id="two">凯哥盛世</div>
+				</li>
+				<li>
+					<div id="one">企业文化</div>
+					<div id="two">凯哥盛世</div>
+				</li>
+				<li>
+					<div id="one">新闻动态</div>
+					<div id="two">凯哥盛世</div>
+				</li>
+				<li>
+					<div id="one">关于企业</div>
+					<div id="two">凯哥盛世</div>
+				</li>
+				<li>
+					<div id="one">联系我们</div>
+					<div id="two">凯哥盛世</div>
+				</li>
+			</ul>
+			<div id="in"><img src="img/in.jpg"></div>
+		</div>
+	</div>
+	
+	
 </body>
+<script src='js/swiper.min.js'></script>
+<script type="text/javascript">
+	var mySwiper = new Swiper('.swiper-container', {
+			autoplay: 3000, //可选选项，自动滑动
+			// 如果需要分页器
+			pagination: '.swiper-pagination',
+			paginationClickable: true,
+			autoplayDisableOnInteraction: false,
+			loop: true,
+		})
+
+	var pics=document.getElementsByClassName('pic');
+	var bar=document.getElementsByClassName('bar');
+	var sp=1,begin;
+	for(var i=0;i<5;i++){
+		var bar=document.createElement('div');
+		pics[i].index=i;
+		pics[i].onmouseover=function(){
+
+			pics[this.index].appendChild(bar);
+			bar.className='bar';
+
+			// alert(bar.)
+			move();
+			
+		}
+	}
+	function move(){
+		sp+=5;
+		bar.style.left=sp+'px';
+		bar.style.top=sp+'px';
+		begin=window.requestAnimationFrame(move);
+		if(sp>=140){
+			sp=0;
+			bar.style.left=sp+'px';
+			bar.style.top=sp+'px';
+			window.cancelAnimationFrame(begin);
+		}
+	}
+
+	
+</script>
 </html>
